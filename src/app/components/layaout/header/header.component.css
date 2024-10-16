@@ -1,0 +1,10 @@
+/* Asegúrate de que el contenedor principal tenga un margen a la izquierda */
+.main-content {
+    margin-left: 256px; /* Ajusta este valor según el ancho de tu barra lateral */
+    transition: margin-left 0.3s ease; /* Transición suave al abrir/cerrar */
+}
+
+/* Si la barra lateral está oculta, quita el margen */
+.sidebar-hidden .main-content {
+    margin-left: 0;
+}

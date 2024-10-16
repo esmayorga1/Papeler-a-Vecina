@@ -6,9 +6,8 @@ import { ProductsComponent } from './components/admin/products/products.componen
 import { ProductsAddComponent } from './components/admin/products-add/products-add.component';
 
 
-export const routes: Routes = [
-    // { path: '', component: LoginComponent },
-    { path: '', component: ProductsComponent },
+export const routes: Routes = [  
+    { path: '', component: HeaderComponent },   
 
       
 ];

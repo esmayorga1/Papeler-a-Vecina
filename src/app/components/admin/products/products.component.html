@@ -41,10 +41,10 @@
                     <td class="py-2 px-4 border-b">{{ product.quantity }}</td>
                     <td class="py-2 px-4 border-b">{{ product.category }}</td>
                     <td class="py-2 px-4 border-b flex space-x-2">
-                        <button (click)="editProduct()" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 transition duration-200">
+                        <button (click)="editProduct(product.id)" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 transition duration-200">
                             Editar
                         </button>
-                        <button (click)="deleteProduct()" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition duration-200">
+                        <button (click)="deleteProduct(product.id)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition duration-200">
                             Eliminar
                         </button>
                     </td>

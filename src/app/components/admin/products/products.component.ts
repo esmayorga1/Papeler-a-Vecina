@@ -3,16 +3,14 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductServiceService } from '../../../services/product-service.service';
 
-
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [ CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+  styleUrls: ['./products.component.css'] // Asegúrate de que este es el nombre correcto
 })
 export class ProductsComponent {
-
   searchTerm: string = '';
   selectedCategory: string = '';
   products: any[] = [];
@@ -26,8 +24,8 @@ export class ProductsComponent {
 
   // Cargar productos desde Firebase
   loadProducts() {
-    this.productService.getProducts().subscribe(products => {
-      this.products = products;
+    this.productService.getProducts1().subscribe(products => {
+      this.products = products.map(p => ({ id: p.id, ...p.data })); // Asegúrate de que cada producto tenga un ID
     });
   }
 
@@ -43,12 +41,23 @@ export class ProductsComponent {
     // Lógica para abrir el modal de añadir producto
   }
 
-  editProduct() {
+  editProduct(productId: string) {
     // Lógica para editar un producto
+    console.log('Editando producto con ID:', productId);
   }
 
-  deleteProduct() {
-    // Lógica para eliminar un producto
-  } 
-
+  deleteProduct(productId: string) {
+    console.log('Eliminando producto con ID:', productId); // Asegúrate de que el ID es correcto
+  
+    if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+      this.productService.deleteProduct(productId)
+        .then(() => {
+          console.log('Producto eliminado con éxito');
+          this.loadProducts(); // Recargar los productos después de eliminar
+        })
+        .catch(error => {
+          console.error('Error al eliminar el producto:', error);
+        });
+    }
+  }
 }

@@ -44,7 +44,9 @@ export class ProductServiceService {
   }
 
   // Función para eliminar un producto
-  deleteProduct(id: string): Promise<void> {
-    return this.firestore.collection('products').doc(id).delete();
+  
+
+  deleteProduct(productId: string): Promise<void> {
+    return this.firestore.collection('products').doc(productId).delete();
   }
 }
