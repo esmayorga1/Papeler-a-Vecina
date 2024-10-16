@@ -1,0 +1,77 @@
+<!-- add-product.component.html -->
+<div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-6 text-center">Agregar Producto</h1>
+
+    <form (ngSubmit)="addProduct()" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <!-- Nombre del Producto -->
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                Nombre del Producto
+            </label>
+            <input
+                type="text"
+                id="name"
+                [(ngModel)]="product.name"
+                name="name"
+                placeholder="Ingresa el nombre del producto"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+        </div>
+
+        <!-- Precio -->
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
+                Precio
+            </label>
+            <input
+                type="number"
+                id="price"
+                [(ngModel)]="product.price"
+                name="price"
+                placeholder="Ingresa el precio del producto"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+        </div>
+
+        <!-- Cantidad -->
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="quantity">
+                Cantidad
+            </label>
+            <input
+                type="number"
+                id="quantity"
+                [(ngModel)]="product.quantity"
+                name="quantity"
+                placeholder="Ingresa la cantidad disponible"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+        </div>
+
+        <!-- Categoría -->
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="category">
+                Categoría
+            </label>
+            <select
+                id="category"
+                [(ngModel)]="product.category"
+                name="category"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            >
+                <option value="" disabled selected>Selecciona una categoría</option>
+                <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+            </select>
+        </div>
+
+        <!-- Botón de Enviar -->
+        <div class="flex items-center justify-between">
+            <button
+                type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+                Agregar Producto
+            </button>
+        </div>
+    </form>
+</div>

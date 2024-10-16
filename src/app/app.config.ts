@@ -30,7 +30,8 @@ export const appConfig: ApplicationConfig = {
       HttpClientModule,
       AngularFireModule.initializeApp(environment.firebaseConfig),
       AngularFireModule,
-      AngularFireAuthModule
+      AngularFireAuthModule,
+      
     )
   ]
 };

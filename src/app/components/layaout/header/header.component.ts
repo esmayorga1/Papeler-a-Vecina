@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import type { ModalOptions, ModalInterface } from 'flowbite'
 
 @Component({
   selector: 'app-header',
@@ -8,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+
+  isSidebarOpen = false;
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
 
 }
