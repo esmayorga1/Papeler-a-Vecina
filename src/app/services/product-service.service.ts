@@ -9,16 +9,13 @@ export class ProductServiceService {
 
   constructor(private firestore: AngularFirestore) {}
 
-  // Función para agregar un nuevo producto
+  // =====================Agregar Nuevo Producto====================
+
   addProduct(product: any): Promise<any> {
     return this.firestore.collection('products').add(product);
   }
 
-  // Función para obtener todos los productos
-  // getProducts1(): Observable<any[]> {
-    // return this.firestore.collection('products').valueChanges();
-  // }
-
+  // =================== Obtener Producto ================================
 
   getProducts1(): Observable<any[]> {
     return this.firestore.collection('products').snapshotChanges().pipe(
@@ -31,21 +28,16 @@ export class ProductServiceService {
       )
     );
   }
-
-  getProducts(): Observable<any[]> {
-    return this.firestore.collection('products').valueChanges();
+  
+  // =================== Editar Producto ================================
+  
+  updateProduct(productId: string, updatedProduct: any) {
+    return this.firestore.collection('products').doc(productId).update(updatedProduct);
   }
   
+
+   // =================== Eliminar Producto ================================
   
-
-  // Función para editar un producto
-  updateProduct(id: string, product: any): Promise<void> {
-    return this.firestore.collection('products').doc(id).update(product);
-  }
-
-  // Función para eliminar un producto
-  
-
   deleteProduct(productId: string): Promise<void> {
     return this.firestore.collection('products').doc(productId).delete();
   }
