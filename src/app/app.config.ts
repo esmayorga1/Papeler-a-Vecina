@@ -22,7 +22,6 @@ export const environment = {
   }
 };
   
-
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), 
     provideClientHydration(),

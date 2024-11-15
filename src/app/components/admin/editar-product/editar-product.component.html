@@ -1,4 +1,3 @@
-<!-- add-product.component.html -->
 <div *ngIf="isOpen" class="modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
     <div class="modal-content bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-11/12 max-w-md">
         <span (click)="close()" class="close cursor-pointer text-gray-700 hover:text-gray-900 float-right text-2xl">&times;</span>
@@ -21,54 +20,112 @@
                 />
             </div>
 
-            <!-- Precio -->
+            <!-- Precio de Compra -->
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
-                    Precio
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="purchasePrice">
+                    Precio de Compra
                 </label>
                 <input
                     type="number"
-                    id="price"
-                    [(ngModel)]="product.price"
-                    name="price"
-                    placeholder="Ingresa el precio del producto"
+                    id="purchasePrice"
+                    [(ngModel)]="product.purchasePrice"
+                    name="purchasePrice"
+                    placeholder="Ingresa el precio de compra"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
             </div>
 
-            <!-- Cantidad -->
+            <!-- Precio de Venta -->
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="quantity">
-                    Cantidad
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="salePrice">
+                    Precio de Venta
                 </label>
                 <input
                     type="number"
-                    id="quantity"
-                    [(ngModel)]="product.quantity"
-                    name="quantity"
+                    id="salePrice"
+                    [(ngModel)]="product.salePrice"
+                    name="salePrice"
+                    placeholder="Ingresa el precio de venta"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+            </div>
+
+            <!-- Cantidad en Stock -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="stockQuantity">
+                    Cantidad en Stock
+                </label>
+                <input
+                    type="number"
+                    id="stockQuantity"
+                    [(ngModel)]="product.stockQuantity"
+                    name="stockQuantity"
                     placeholder="Ingresa la cantidad disponible"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
             </div>
 
-            <!-- Categoría -->
+            <!-- Categoría (Campo de texto) -->
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="category">
                     Categoría
                 </label>
-                <select
+                <input
+                    type="text"
                     id="category"
                     [(ngModel)]="product.category"
                     name="category"
+                    placeholder="Ingresa la categoría del producto"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                >
-                    <option value="" disabled selected>Selecciona una categoría</option>
-                    <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-                </select>
+                />
+            </div>
+
+            <!-- Marca -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="brand">
+                    Marca
+                </label>
+                <input
+                    type="text"
+                    id="brand"
+                    [(ngModel)]="product.brand"
+                    name="brand"
+                    placeholder="Ingresa la marca del producto"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+            </div>
+
+            <!-- Proveedor -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="supplier">
+                    Proveedor
+                </label>
+                <input
+                    type="text"
+                    id="supplier"
+                    [(ngModel)]="product.supplier"
+                    name="supplier"
+                    placeholder="Ingresa el proveedor del producto"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+            </div>
+
+            <!-- Descripción -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+                    Descripción
+                </label>
+                <textarea
+                    id="description"
+                    [(ngModel)]="product.description"
+                    name="description"
+                    placeholder="Ingresa una descripción del producto"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                ></textarea>
             </div>
 
             <!-- Botón de Enviar -->
-            <div (click)="editProduct()" class="flex items-center justify-between">
+            <div class="flex items-center justify-between">
                 <button
                     type="submit"
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

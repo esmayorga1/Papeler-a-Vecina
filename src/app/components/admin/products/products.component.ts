@@ -10,7 +10,7 @@ import { EditarProductComponent } from '../editar-product/editar-product.compone
   standalone: true,
   imports: [CommonModule, FormsModule, ProductsAddComponent, EditarProductComponent],
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css'] // Asegúrate de que este es el nombre correcto
+  styleUrls: ['./products.component.css'] 
 })
 export class ProductsComponent implements AfterViewInit {
   @ViewChild(ProductsAddComponent) modalComponent!: ProductsAddComponent;
@@ -19,7 +19,7 @@ export class ProductsComponent implements AfterViewInit {
   searchTerm: string = '';
   selectedCategory: string = '';
   products: any[] = [];
-  categories = ['Categoría A', 'Categoría B', 'Categoría C'];
+  categories: string[] = [];
   selectedProduct: any;
   isEditOpen: boolean = false;
   
@@ -27,6 +27,7 @@ export class ProductsComponent implements AfterViewInit {
 
   ngOnInit() {
     this.loadProducts();
+    this.loadCategories()
   }
 
   ngAfterViewInit() {
@@ -43,13 +44,30 @@ export class ProductsComponent implements AfterViewInit {
   }
 
   // ======================Filtrar Productos=================================
+
   filteredProducts() {
+    return this.products.filter((product) => {
+      const matchesSearch =
+        product.name ? product.name.toLowerCase().includes(this.searchTerm.toLowerCase()) : false;
+      const matchesCategory = this.selectedCategory ? product.category === this.selectedCategory : true;
+      return matchesSearch && matchesCategory;
+    });
+  }
+  filteredProducts1() {
     return this.products.filter(product => {
       const matchesSearch = product.name ? product.name.toLowerCase().includes(this.searchTerm.toLowerCase()) : false;
       const matchesCategory = this.selectedCategory ? product.category === this.selectedCategory : true;
       return matchesSearch && matchesCategory;
     });
   }
+
+  loadCategories() {
+    this.productService.getCategories().subscribe((products) => {
+      const allCategories = products.map((product: any) => product.category);
+      this.categories = [...new Set(allCategories)]; // Eliminar categorías duplicadas
+    });
+  }
+
 
   // ======================Editar Producto=================================
   
@@ -102,5 +120,7 @@ openEditProductModal() {
     console.error('modalComponent no está definido');
   }
 }
+
+openAddCategoryModal(){}
 
 }

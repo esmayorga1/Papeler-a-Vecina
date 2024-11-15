@@ -14,18 +14,22 @@ export class EditarProductComponent {
   product = {
     id: '',
     name: '',
-    price: 0,
-    quantity: 0,
+    purchasePrice: 0,
+    salePrice: 0,
+    stockQuantity: 0,
     category: '',
+    brand: '',
+    supplier: '',
     description: '',
     imageUrl: '',
   };
+
   categories: any;
   isOpen = false;
 
   constructor(private productService: ProductServiceService) {}
 
-  // =============== Funcion de Cerrar Producto =================================
+  // =============== Función para Editar Producto =================================
 
   editProduct() {
     if (this.product && this.product.id) {
@@ -42,22 +46,25 @@ export class EditarProductComponent {
     }
   }
 
-  // =================Abrir Modal cerrar modal===================
-
+  // =================Abrir Modal===================
   open() {
     this.isOpen = true;
   }
 
-  // =================Cerrar Modal cerrar modal===================
+  // =================Cerrar Modal===================
   close() {
     this.isOpen = false;
 
+    // Reiniciar el formulario
     this.product = {
       id: '',
       name: '',
-      price: 0,
-      quantity: 0,
+      purchasePrice: 0,
+      salePrice: 0,
+      stockQuantity: 0,
       category: '',
+      brand: '',
+      supplier: '',
       description: '',
       imageUrl: '',
     };

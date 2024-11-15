@@ -8,14 +8,18 @@ import { ProductServiceService } from '../../../services/product-service.service
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './products-add.component.html',
-  styleUrl: './products-add.component.css',
+  styleUrls: ['./products-add.component.css'],
 })
 export class ProductsAddComponent {
   product = {
+    id: '',
     name: '',
-    price: 0,
-    quantity: 0,
+    purchasePrice: 0,
+    salePrice: 0,
+    stockQuantity: 0,
     category: '',
+    brand: '',
+    supplier: '',
     description: '',
     imageUrl: '',
   };
@@ -25,17 +29,25 @@ export class ProductsAddComponent {
 
   constructor(private productService: ProductServiceService) {}
 
-
-// =============Añadir Producto======================
-
+  // =============Añadir Producto======================
   addProduct() {
-    if (this.product.name && this.product.price) {
+    // Verificar que todos los campos requeridos estén completos
+    if (
+      this.product.name &&
+      this.product.purchasePrice &&
+      this.product.salePrice &&
+      this.product.brand &&
+      this.product.supplier &&
+      this.product.stockQuantity &&
+      this.product.category
+    ) {
+      // Llamar al servicio para agregar el producto
       this.productService
         .addProduct(this.product)
         .then(() => {
           console.log('Producto agregado exitosamente');
-          // Limpiar el formulario o hacer algo adicional 
-          // Pendiente 
+          // Limpiar el formulario o hacer algo adicional si es necesario
+          this.resetForm();
         })
         .catch((error: any) => {
           console.error('Error al agregar el producto:', error);
@@ -45,13 +57,28 @@ export class ProductsAddComponent {
     }
   }
 
+  // =============Restablecer el formulario======================
+  resetForm() {
+    this.product = {
+      id: '',
+      name: '',
+      purchasePrice: 0,
+      salePrice: 0,
+      stockQuantity: 0,
+      category: '',
+      brand: '',
+      supplier: '',
+      description: '',
+      imageUrl: '',
+    };
+  }
 
-// =============Abriendo modal======================
+  // =============Abrir modal======================
   open() {
     this.isOpen = true;
   }
 
-// =============Cerrando modal======================
+  // =============Cerrar modal======================
   close() {
     this.isOpen = false;
   }

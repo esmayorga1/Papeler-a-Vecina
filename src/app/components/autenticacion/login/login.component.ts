@@ -23,7 +23,7 @@ export class LoginComponent {
     this.authService.loginWithEmail(email, password)
       .then(() => {
         console.log("Inicio de sesión exitoso");
-        //this.router.navigate(['/admin']); 
+        this.router.navigate(['/admin']); 
       })
       .catch(error => {
         // Manejar errores específicos

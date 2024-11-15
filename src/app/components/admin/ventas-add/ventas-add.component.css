@@ -1,0 +1,23 @@
+/* Capa de fondo para el modal */
+.modal-overlay {
+    position: fixed;  /* Hace que el modal sea fijo en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);  /* Fondo semi-transparente */
+    display: flex;
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;      /* Centra verticalmente */
+    z-index: 1000;  /* Asegúrate de que el modal esté por encima de otros elementos */
+  }
+  
+  /* Estilos para el contenido del modal */
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;  /* Puedes ajustar el tamaño del modal */
+    max-width: 100%;
+  }
+  

@@ -1,0 +1,80 @@
+<div *ngIf="isOpen" class="modal-overlay">
+  <div class="modal-content container mx-auto p-4">
+
+    <span (click)="close()" class="close cursor-pointer text-gray-700 hover:text-gray-900 float-right text-2xl">&times;</span>
+  
+  
+    <h2 class="text-2xl font-bold text-center mb-6">Registrar Venta</h2>
+
+    <form (ngSubmit)="registerSale()">
+      <!-- Selección de Producto -->
+      <div class="mb-4">
+        <label for="product" class="block text-sm font-bold text-gray-700">Selecciona el Producto</label>
+        <select
+          id="product"
+          [(ngModel)]="selectedProduct"
+          name="product"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          required
+          (change)="updateTotal()"
+        >
+          <option value="" disabled selected>Seleccione un Producto</option>
+          <option *ngFor="let product of products" [value]="product.id">
+            {{ product.name }} - ${{ product.salePrice }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Cantidad Vendida -->
+      <div class="mb-4">
+        <label for="quantity" class="block text-sm font-bold text-gray-700">Cantidad Vendida</label>
+        <input
+          type="number"
+          id="quantity"
+          [(ngModel)]="sale.quantity"
+          name="quantity"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          required
+          min="1"
+          (input)="updateTotal()"
+        />
+      </div>
+
+      <!-- Precio Total -->
+      <div class="mb-4">
+        <label for="total" class="block text-sm font-bold text-gray-700">Precio Total</label>
+        <input
+          type="number"
+          id="total"
+          [(ngModel)]="sale.total"
+          name="total"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
+      <!-- Fecha de la Venta -->
+      <div class="mb-4">
+        <label for="date" class="block text-sm font-bold text-gray-700">Fecha de la Venta</label>
+        <input
+          type="date"
+          id="date"
+          [(ngModel)]="sale.date"
+          name="date"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          required
+        />
+      </div>
+
+      <!-- Botón de Enviar -->
+      <div class="text-center">
+        <button
+          type="submit"
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+
+        >
+          Registrar Venta
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -11,6 +11,8 @@
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <!-- Contenido del menú lateral -->
         <ul class="space-y-2">
+
+             <!-- =================Dashboard========================= -->
             <li>
                 <a (click)="toggleMenuDropdownDasboard()" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -56,12 +58,31 @@
                 </a>
              </li> 
 
+                         
+            <!-- =================Reportes========================= -->
+            <li>
+               <a (click)="toggleMenuDropdownRegister()" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                  <!-- Nuevo Icono de Registrar Usuario -->
+                  <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                     <path d="M10 2a1 1 0 0 1 1 1v4h4a1 1 0 1 1 0 2h-4v4a1 1 0 1 1-2 0v-4H5a1 1 0 1 1 0-2h4V3a1 1 0 0 1 1-1z"/>
+                     <path fill-rule="evenodd" d="M10 0a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm0 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="flex-1 ms-3 whitespace-nowrap">Registrar Usuario</span>
+               </a>
+            </li>   
+            
+            
              <!-- =======================Cerrar Sesión ======================= -->
-             
-             
 
-
-
+             <li>
+                <a (click)="logout()" href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                   <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
+                   </svg>
+                   <span class="flex-1 ms-3 whitespace-nowrap"> Cerrar Sesión  </span>
+                </a>
+             </li>
+               
         </ul>
     </div>
 </aside>
@@ -74,5 +95,7 @@
     <app-products *ngIf="isMenuDropdownOpen"></app-products>
     <app-ventas *ngIf="isventas"></app-ventas>
     <app-reportes *ngIf="isReportes"></app-reportes>
+    <app-register *ngIf="isRegister"></app-register>
+    
 </div>
 
